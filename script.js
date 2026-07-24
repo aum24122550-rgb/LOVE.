@@ -5,35 +5,35 @@
 const photos = [
 
     "photo/96524.jpg",
-    "photo/96524.jpg",
-    "photo/96524.jpg",
-    "photo/96524.jpg",
-    "photo/96524.jpg",
-    "photo/6.jpg",
-    "photo/7.jpg",
-    "photo/8.jpg",
-    "photo/9.jpg",
-    "photo/10.jpg",
-    "photo/11.jpg",
-    "photo/12.jpg",
-    "photo/13.jpg",
-    "photo/14.jpg",
-    "photo/15.jpg",
-    "photo/16.jpg",
-    "photo/17.jpg",
-    "photo/18.jpg",
-    "photo/19.jpg",
-    "photo/20.jpg",
-    "photo/21.jpg",
-    "photo/22.jpg",
-    "photo/23.jpg",
-    "photo/24.jpg",
-    "photo/25.jpg",
-    "photo/26.jpg",
-    "photo/27.jpg",
-    "photo/28.jpg",
-    "photo/29.jpg",
-    "photo/30.jpg"
+    "photo/96526.jpg",
+    "photo/96555.jpg",
+    "photo/96556.jpg",
+    "photo/96557.jpg",
+    "photo/96558.jpg",
+    "photo/96559.jpg",
+    "photo/96560.jpg",
+    "photo/96561.jpg",
+    "photo/96562.jpg",
+    "photo/96563.jpg",
+    "photo/96564.jpg",
+    "photo/96565.jpg",
+    "photo/96566.jpg",
+    "photo/96567.jpg",
+    "photo/96568.jpg",
+    "photo/96569.jpg",
+    "photo/96570.jpg",
+    "photo/96571.jpg",
+    "photo/96572.jpg",
+    "photo/96573.jpg",
+    "photo/96574.jpg",
+    "photo/96575.jpg",
+    "photo/96576.jpg",
+    "photo/96577.jpg",
+    "photo/96578.jpg",
+    "photo/96579.jpg",
+    "photo/96580.jpg",
+    "photo/96581.jpg",
+    "photo/96582.jpg"
 
 ];
 
@@ -47,17 +47,14 @@ const gallery = document.getElementById("gallery");
 
 photos.forEach((photo)=>{
 
+
     const img = document.createElement("img");
+
 
     img.src = photo;
 
+
     gallery.appendChild(img);
 
-});
 
-const nextButton = document.querySelector('.next-button');
-if (nextButton) {
-    nextButton.addEventListener('click', () => {
-        window.location.href = 'next.html';
-    });
-}
+});
