@@ -47,14 +47,17 @@ const gallery = document.getElementById("gallery");
 
 photos.forEach((photo)=>{
 
-
     const img = document.createElement("img");
-
 
     img.src = photo;
 
-
     gallery.appendChild(img);
 
-
 });
+
+const nextButton = document.querySelector('.next-button');
+if (nextButton) {
+    nextButton.addEventListener('click', () => {
+        window.location.href = 'next.html';
+    });
+}
