@@ -1,60 +1,104 @@
-// ==========================
-// รายชื่อรูปภาพ
-// ==========================
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
 
-const photos = [
+function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
 
-    "photo/96524.jpg",
-    "photo/96526.jpg",
-    "photo/96555.jpg",
-    "photo/96556.jpg",
-    "photo/96557.jpg",
-    "photo/96558.jpg",
-    "photo/96559.jpg",
-    "photo/96560.jpg",
-    "photo/96561.jpg",
-    "photo/96562.jpg",
-    "photo/96563.jpg",
-    "photo/96564.jpg",
-    "photo/96565.jpg",
-    "photo/96566.jpg",
-    "photo/96567.jpg",
-    "photo/96568.jpg",
-    "photo/96569.jpg",
-    "photo/96570.jpg",
-    "photo/96571.jpg",
-    "photo/96572.jpg",
-    "photo/96573.jpg",
-    "photo/96574.jpg",
-    "photo/96575.jpg",
-    "photo/96576.jpg",
-    "photo/96577.jpg",
-    "photo/96578.jpg",
-    "photo/96579.jpg",
-    "photo/96580.jpg",
-    "photo/96581.jpg",
-    "photo/96582.jpg"
+const stars = [];
 
+for (let i = 0; i < 900; i++) {
+    stars.push({
+        x: (Math.random() - 0.5) * canvas.width,
+        y: (Math.random() - 0.5) * canvas.height,
+        z: Math.random() * canvas.width
+    });
+}
+
+function drawStars() {
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (const s of stars) {
+
+        s.z -= 18;
+
+        if (s.z <= 1) {
+            s.x = (Math.random() - 0.5) * canvas.width;
+            s.y = (Math.random() - 0.5) * canvas.height;
+            s.z = canvas.width;
+        }
+
+        const k = 128 / s.z;
+
+        const x = s.x * k + canvas.width / 2;
+        const y = s.y * k + canvas.height / 2;
+
+        const size = (1 - s.z / canvas.width) * 5;
+
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.arc(x, y, Math.max(size, 0.5), 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    requestAnimationFrame(drawStars);
+}
+
+drawStars();
+
+const words = [
+    { text: "3", color: "#ff4db8" },
+    { text: "2", color: "#ff4db8" },
+    { text: "1", color: "#ffd84d" },
+    { text: "I", color: "#ffffff" },
+    { text: "LOVE", color: "#ff3399" },
+    { text: "YOU", color: "#ff66cc" }
 ];
 
+const text = document.getElementById("text");
 
-// ==========================
-// แสดงรูป
-// ==========================
+let index = 0;ฃ
+function showWord() {
 
-const gallery = document.getElementById("gallery");
+    text.innerText = words[index].text;
+    text.style.color = words[index].color;
 
+    // รีเซ็ต Animation
+    text.classList.remove("fade");
+    void text.offsetWidth;
+    text.classList.add("fade");
 
-photos.forEach((photo)=>{
+    index++;
 
+    if (index < words.length) {
 
-    const img = document.createElement("img");
+        setTimeout(showWord, 900);
 
+    } else {
 
-    img.src = photo;
+        setTimeout(() => {
 
+            const flash = document.getElementById("flash");
 
-    gallery.appendChild(img);
+            flash.style.opacity = "1";
 
+            setTimeout(() => {
 
-});
+                // เปลี่ยนไปหน้าถัดไป
+                window.location.href = "name.html";
+
+            }, 500);
+
+        }, 800);
+
+    }
+
+}
+
+// เริ่มหลังจากโหลด 0.5 วินาที
+setTimeout(showWord, 500);
